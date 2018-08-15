@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/15 17:23:32 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/15 21:18:27 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,30 @@ int		ft_store(t_lem_in *lem)
 void	ft_swap_rooms(t_lem_in *lem)
 {
 	t_rm temp;
-
-	temp.name = lem->rm[0].name;
-	temp.x = lem->rm[0].x;
-	temp.y = lem->rm[0].y;
-	lem->rm[0].name = lem->rm[lem->start].name;
-	lem->rm[0].x = lem->rm[lem->start].x;
-	lem->rm[0].y = lem->rm[lem->start].y;
-	lem->rm[lem->start].name = temp.name;
-	lem->rm[lem->start].x = temp.x;
-	lem->rm[lem->start].y = temp.y;
-	temp.name = lem->rm[lem->rooms - 1].name;
-	temp.x = lem->rm[lem->rooms - 1].x;
-	temp.y = lem->rm[lem->rooms - 1].y;
-	lem->rm[lem->rooms - 1].name = lem->rm[lem->end].name;
-	lem->rm[lem->rooms - 1].x = lem->rm[lem->end].x;
-	lem->rm[lem->rooms - 1].y = lem->rm[lem->end].y;
-	lem->rm[lem->end].name = temp.name;
-	lem->rm[lem->end].x = temp.x;
-	lem->rm[lem->end].y = temp.y;
+	if (lem->start != 0)
+	{
+		temp.name = lem->rm[0].name;
+		temp.x = lem->rm[0].x;
+		temp.y = lem->rm[0].y;
+		lem->rm[0].name = lem->rm[lem->start].name;
+		lem->rm[0].x = lem->rm[lem->start].x;
+		lem->rm[0].y = lem->rm[lem->start].y;
+		lem->rm[lem->start].name = temp.name;
+		lem->rm[lem->start].x = temp.x;
+		lem->rm[lem->start].y = temp.y;
+	}
+	if (lem->end != lem->rooms - 1)
+	{
+		temp.name = lem->rm[lem->rooms - 1].name;
+		temp.x = lem->rm[lem->rooms - 1].x;
+		temp.y = lem->rm[lem->rooms - 1].y;
+		lem->rm[lem->rooms - 1].name = lem->rm[lem->end].name;
+		lem->rm[lem->rooms - 1].x = lem->rm[lem->end].x;
+		lem->rm[lem->rooms - 1].y = lem->rm[lem->end].y;
+		lem->rm[lem->end].name = temp.name;
+		lem->rm[lem->end].x = temp.x;
+		lem->rm[lem->end].y = temp.y;
+	}
 }
 
 void ft_save_room(t_lem_in *lem, char *str)
@@ -137,6 +142,15 @@ void	ft_print_links(t_lem_in *lem)
 	i = 0;
 	while (i < lem->rooms)
 	{
+		j = 0;
+		if (i == 0)
+		{
+			printf("  ");
+			while (j < lem->rooms)
+				printf("%s ", lem->rm[j++].name);
+			printf("\n");
+		}
+		printf("%s ", lem->rm[i].name);
 		j = 0;
 		while (j < lem->rooms)
 			printf("%d ", lem->map[i][j++]);
