@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/14 16:52:16 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/15 18:00:10 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 void	ft_lem_in(t_lem_in *lem)
 {
 	ft_read(lem);
-	write(1,"yes\n", 4);
 	ft_store(lem);
-	write(1,"yes\n", 4);
 	ft_convert_links(lem);
-	write(1,"yes\n", 4);
 	ft_print_links(lem);
+	//ft_find_lists(lem);
+	shortest_list(lem, lem->rm[0].name, 0);
+	lem->len = ft_count_list_len(lem);
+	printf("\nLIST: %s LEN: %d\n", lem->lst, lem->len);
 }
 
 int main (void)

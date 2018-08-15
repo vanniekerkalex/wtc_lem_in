@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/14 17:16:50 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/15 17:23:32 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,32 @@ int		ft_store(t_lem_in *lem)
 	}
 	lem->links[lem->link] = NULL;
 	lem->rm[lem->rooms].name = NULL;
+	ft_swap_rooms(lem);
 	return (1);
+}
+
+void	ft_swap_rooms(t_lem_in *lem)
+{
+	t_rm temp;
+
+	temp.name = lem->rm[0].name;
+	temp.x = lem->rm[0].x;
+	temp.y = lem->rm[0].y;
+	lem->rm[0].name = lem->rm[lem->start].name;
+	lem->rm[0].x = lem->rm[lem->start].x;
+	lem->rm[0].y = lem->rm[lem->start].y;
+	lem->rm[lem->start].name = temp.name;
+	lem->rm[lem->start].x = temp.x;
+	lem->rm[lem->start].y = temp.y;
+	temp.name = lem->rm[lem->rooms - 1].name;
+	temp.x = lem->rm[lem->rooms - 1].x;
+	temp.y = lem->rm[lem->rooms - 1].y;
+	lem->rm[lem->rooms - 1].name = lem->rm[lem->end].name;
+	lem->rm[lem->rooms - 1].x = lem->rm[lem->end].x;
+	lem->rm[lem->rooms - 1].y = lem->rm[lem->end].y;
+	lem->rm[lem->end].name = temp.name;
+	lem->rm[lem->end].x = temp.x;
+	lem->rm[lem->end].y = temp.y;
 }
 
 void ft_save_room(t_lem_in *lem, char *str)
