@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:59:36 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/17 21:02:46 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/17 21:43:15 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct	lem_in
 	int		start;
 	int		end;
 	char	*lst;
-	int		len;
+	int		len; // number of rooms in final list
+	int		*rmf; //order of rooms in list
 }				t_lem_in;
 
 // INIT.C
@@ -64,5 +65,8 @@ int 	crawl_down (t_lem_in *lem, char *lst, int y, int x);
 int 	crawl_up (t_lem_in *lem, char *lst, int y, int x);
 int 	crawl_left (t_lem_in *lem, char *lst, int y, int x);
 int 	crawl_right (t_lem_in *lem, char *lst, int y, int x);
+
+// MOVE.C
+void	sort_rooms(t_lem_in *lem);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/17 20:59:35 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/17 21:51:10 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_store(t_lem_in *lem)
 			ft_save_room(lem, lem->data[i]);
 		else if (ft_strchr(lem->data[i], '-'))
 			lem->links[lem->link++] = ft_strdup(lem->data[i]);
-		else
+		else if (lem->data[i][0] != '#')
 			ft_save_ants(lem, lem->data[i]);
 		i++;
 	}
@@ -101,7 +101,7 @@ void ft_save_room(t_lem_in *lem, char *str)
 
 void ft_save_ants(t_lem_in *lem, char *str)
 {
-	if (((lem->ants = ft_atoi(str)) == 0) && (ft_strcmp(str, "0")
+	if (((lem->ants = ft_atoi(str)) == 0) || (ft_strcmp(str, "0")
 		|| ft_strcmp(str, "-0"))) //not actually equal to 0
 		//error
 		write(1, "ants #\n", 7);

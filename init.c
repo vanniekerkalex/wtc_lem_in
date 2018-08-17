@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 12:28:58 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/17 21:03:57 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/17 21:29:00 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ t_lem_in	*init_struct(void)
 	lem->start = 0;
 	lem->end = 0;
 	lem->len = 999;
+	lem->rmf = (int *)malloc(sizeof(int) * 100);
+	i = 0;
+	while (i < 100)
+		lem->rmf[i++] = -1;
 	return (lem);
 }
 
