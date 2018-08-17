@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:59:36 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/17 21:43:15 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/17 22:21:26 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ int 	crawl_right (t_lem_in *lem, char *lst, int y, int x);
 
 // MOVE.C
 void	sort_rooms(t_lem_in *lem);
+void	move_ants(t_lem_in *lem);
+void	print_ants(t_lem_in *lem, int ant);
+int		move_rec(t_lem_in *lem, int ant);
 
 #endif

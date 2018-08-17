@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/17 21:44:07 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/17 22:22:34 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_lem_in(t_lem_in *lem)
 	crawl(lem);
 	printf("Link: %s\n", lem->lst);
 	printf("Ants: %d\n", lem->ants);
+	sort_rooms(lem);
+	move_ants(lem);
 }
 
 int main (void)
