@@ -6,23 +6,11 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 10:55:55 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/15 14:55:20 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/17 20:54:15 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
-
-void	ft_init_lists(t_lem_in *lem)
-{
-	int i;
-
-	i = 0;
-	lem->list = (char **)malloc(sizeof(char *) * lem->rooms);
-	while (i < lem->rooms - 1)
-		lem->list[i++] = ft_strnew(lem->rooms * 20); //for room name length
-	lem->list[i] = NULL;
-}
 
 int		ft_is_in_list(char *node, char *list) // checks if already in the list
 {
@@ -30,8 +18,6 @@ int		ft_is_in_list(char *node, char *list) // checks if already in the list
 	char **s;
 
 	i = 0;
-	//ft_putstr(list);
-	//write(1, "\n", 1);
 	s = ft_strsplit(list, '-');
 	while (*(s + i))
 	{
@@ -41,65 +27,44 @@ int		ft_is_in_list(char *node, char *list) // checks if already in the list
 	return(0);
 }
 
-char	*ft_match_lists(t_lem_in *lem, char *node, char *list) // finds room and returns connected room
+int 	ft_count_list_len(t_lem_in *lem)
 {
-	int i;
-	char **s;
+	char **str;
+	int len;
 
-	i = 0;
-	while (i < lem->link)
-	{
-		s = ft_strsplit(lem->links[i], '-');
-		if (!ft_strcmp(s[0], node) && !ft_is_in_list(s[1], list))
-			return (s[1]);
-		else if (!ft_strcmp(s[1], node) && !ft_is_in_list(s[0], list))
-			return (s[0]);
-		i++;
-	}
-	return (NULL);
+	str = ft_strsplit(lem->lst, '-');
+	len = 0;
+	while (*(str + len))
+		len++;
+	return (len);
 }
 
-char	*ft_create_lists(t_lem_in *lem, char *start, char *list) // recursively find lists and store
+char	*add_room(t_lem_in *lem, char *lst, int rm)
 {
-	char *str;
-
-	if (!start)
-		return (NULL);
-
-	if (!ft_strlen(list))
-		list = start;
-
-	if (!ft_strcmp(lem->rm[lem->end].name, ft_match_lists(lem, start, list)))
+	if (!ft_is_in_list(lem->rm[rm].name, lst))
 	{
-		write(1,"zzz\n",4);
-		if (!ft_strcmp(list, ""))
-			list = start;
-		str = ft_strjoin(list, "-");
-		list = ft_strjoin(str, lem->rm[lem->end].name);
-		write(1,"zzz\n",4);
-		return (list);
+		lst = ft_strjoin(lst, "-");
+		lst = ft_strjoin(lst, lem->rm[rm].name);
+		if (rm == lem->rooms - 1)
+		{
+			if (crawl_count(lst) < lem->len)
+			{
+				lem->len = crawl_count(lst);
+				lem->lst = ft_strdup(lst);
+			}
+		}
 	}
-
-	if(!ft_is_in_list(ft_match_lists(lem, start, list), list))
-	{
-		//if (!ft_strcmp(list, ""))
-		//	list = ft_strdup(start);
-		str = ft_strjoin(list, "-");
-		list = ft_strjoin(str, ft_match_lists(lem, start, list));
-		start = ft_match_lists(lem, start, list);
-		ft_putstr(list);
-		write(1, "\n", 1);
-		write(1,"zzz\n",4);
-		ft_create_lists(lem, start, list);
-	}
-	return (list);
+	return (lst);
 }
 
-void	ft_find_lists(t_lem_in *lem)
+int		crawl_count(char *lst)
 {
-	char *str;
+	char **str;
+	int len;
 
-	ft_init_lists(lem);
-	str = ft_create_lists(lem, lem->rm[lem->start].name, "");
-	printf("\nList: %s\n", str);
+	str = ft_strsplit(lst, '-');
+	len = 0;
+	while (*(str + len))
+		len++;
+	return (len);
 }
