@@ -6,42 +6,96 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 21:18:42 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/17 22:55:41 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/18 16:11:56 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
 
-int		move_rec(t_lem_in *lem, int ant)
+int		move_rec(t_lem_in *lem, int ant, int rm)
 {
 	if (lem->rm[lem->rmf[lem->len - 1]].size == lem->ants)
 		return (1);
-	if (ant != 0 && lem->rm[lem->rmf[ant]].size == 0)
+	if (rm <= 0)
 	{
-		lem->rm[lem->rmf[ant]].size++;
-		lem->rm[lem->rmf[ant - 1]].size--;
-		print_ants(lem, ant);
+		write(1,"\n",1);
+		//move_rec(lem, ant, lem->len - 1);
+		move_rec(lem, 1, lem->len - 1);
+		return (0);
 	}
-	if (lem->rm[lem->rmf[ant]].size > 0)
+	else if (lem->rm[lem->rmf[rm]].size == 0 && lem->rm[lem->rmf[rm - 1]].size == 0)
 	{
-		move_rec(lem, ant + 1);
+		//move_rec(lem, ant, rm - 1);
 	}
+	else if (lem->rm[lem->rmf[rm - 1]].size == 0 && lem->rm[lem->rmf[rm]].size >= 1)
+	{
+		return (0);
+	}
+	else if (rm == lem->len - 1 && lem->rm[lem->rmf[rm - 1]].size >= 1)
+	{
+		lem->rm[lem->rmf[rm - 1]].size--;
+		lem->rm[lem->rmf[rm]].size++;
+		print_ants(lem, ant, rm);
+		move_rec(lem, ant + 1, rm - 1);
+	}
+	else if (lem->rm[lem->rmf[rm]].size == 0 && lem->rm[lem->rmf[rm - 1]].size >= 1)
+	{
+		lem->rm[lem->rmf[rm - 1]].size--;
+		lem->rm[lem->rmf[rm]].size++;
+		print_ants(lem, ant, rm);
+		move_rec(lem, ant + 1, rm - 1);
+	}
+	move_rec(lem, ant, rm - 1);
+
 	return (0);
 }
 
-void	print_ants(t_lem_in *lem, int ant)
+void	sort_ite(t_lem_in *lem)
+{
+	int i;
+	int j;
+	int ant;
+
+	ant = 1;
+	while (lem->rm[lem->rmf[lem->len - 1]].size <= lem->ants)
+	{
+		i = 1;
+		j = lem->len - 1;
+		while (j >= 1)
+		{
+			if (j == lem->len - 1 && lem->rm[lem->rmf[j - 1]].size >= 1)
+			{
+				lem->rm[lem->rmf[j - 1]].size--;
+				lem->rm[lem->rmf[j]].size++;
+				print_ants(lem, i, j);
+			}
+			else if (lem->rm[lem->rmf[j - 1]].size >= 1 && lem->rm[lem->rmf[j]].size == 0)
+			{
+				lem->rm[lem->rmf[j - 1]].size--;
+				lem->rm[lem->rmf[j]].size++;
+				print_ants(lem, i, j);
+			}
+			j--;
+		}
+		i++;
+		write(1, "\n", 1);
+	}
+}
+
+void	print_ants(t_lem_in *lem, int ant, int rm)
 {
 	write(1,"L", 1);
 	ft_putnbr(ant);
 	write(1,"-", 1);
-	ft_putstr(lem->rm[lem->rmf[ant]].name);
+	ft_putstr(lem->rm[lem->rmf[rm]].name);
 }
 
 void	move_ants(t_lem_in *lem)
 {
 	lem->rm[lem->rmf[0]].size = lem->ants;
-	move_rec(lem, 0);
+	//sort_ite(lem);
+	move_rec(lem, 1, lem->len - 1);
 }
 
 void	sort_rooms(t_lem_in *lem)
