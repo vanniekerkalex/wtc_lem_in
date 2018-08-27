@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/17 21:51:10 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/27 12:23:22 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_read(t_lem_in *lem)
 int		ft_store(t_lem_in *lem)
 {
 	int i;
+	char *p;
 
 	i = 0;
 	while (lem->data[i])
@@ -46,12 +47,13 @@ int		ft_store(t_lem_in *lem)
 			lem->start = lem->rooms;
 		else if (!ft_strcmp(lem->data[i], "##end"))
 			lem->end = lem->rooms;
-		else if (ft_strchr(lem->data[i], ' '))
-			ft_save_room(lem, lem->data[i]);
+		else if ((p = ft_strchr(lem->data[i], ' ')) &&
+				lem->data[i][0] != '#' && (p = ft_strchr(p + 1, ' ')))
+				ft_save_room(lem, lem->data[i]);
 		else if (ft_strchr(lem->data[i], '-'))
 			lem->links[lem->link++] = ft_strdup(lem->data[i]);
-		else if (lem->data[i][0] != '#')
-			ft_save_ants(lem, lem->data[i]);
+		else if (lem->data[i][0] != '#' && !ft_strchr(lem->data[i], ' '))
+			lem->ants = ft_atoi(lem->data[i]);
 		i++;
 	}
 	lem->links[lem->link] = NULL;
@@ -97,14 +99,4 @@ void ft_save_room(t_lem_in *lem, char *str)
 	lem->rm[lem->rooms].name = ft_strdup(s[0]);
 	lem->rm[lem->rooms].x = ft_atoi(s[1]);
 	lem->rm[lem->rooms++].y = ft_atoi(s[2]);
-}
-
-void ft_save_ants(t_lem_in *lem, char *str)
-{
-	if (((lem->ants = ft_atoi(str)) == 0) || (ft_strcmp(str, "0")
-		|| ft_strcmp(str, "-0"))) //not actually equal to 0
-		//error
-		write(1, "ants #\n", 7);
-	//else
-		//ok
 }

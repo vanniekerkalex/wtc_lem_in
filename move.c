@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 21:18:42 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/18 17:49:02 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/27 12:19:21 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ void	print_ants(t_lem_in *lem, int ant, int rm)
 	ft_putnbr(ant);
 	write(1,"-", 1);
 	ft_putstr(lem->rm[lem->rmf[rm]].name);
+	if (ft_strcmp(lem->rm[lem->rmf[rm]].name, lem->rm[lem->end].name)
+            && (ant != lem->ants))
+		write(1, " ", 1);
+	if (!ft_strcmp(lem->rm[lem->rmf[rm]].name, lem->rm[lem->end].name)
+            && (ant != lem->ants))
+		write(1, " ", 1);
 }
 
 void	move_ants(t_lem_in *lem)
@@ -114,7 +120,7 @@ void	sort_rooms(t_lem_in *lem)
 			if (!ft_strcmp(*(s + i),lem->rm[j].name))
 			{
 				lem->rmf[i] = j;
-				printf("%s | %d\n", *(s + i), lem->rmf[i]);
+	//			printf("%s | %d\n", *(s + i), lem->rmf[i]);
 			}
 			j++;
 		}
