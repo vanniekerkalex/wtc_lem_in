@@ -6,17 +6,16 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 12:23:22 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/27 16:30:53 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
-int	ft_read(t_lem_in *lem)
+int		ft_read(t_lem_in *lem)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = 0;
 	while (get_next_line(0, &line))
@@ -37,8 +36,8 @@ int	ft_read(t_lem_in *lem)
 
 int		ft_store(t_lem_in *lem)
 {
-	int i;
-	char *p;
+	int		i;
+	char	*p;
 
 	i = 0;
 	while (lem->data[i])
@@ -49,7 +48,7 @@ int		ft_store(t_lem_in *lem)
 			lem->end = lem->rooms;
 		else if ((p = ft_strchr(lem->data[i], ' ')) &&
 				lem->data[i][0] != '#' && (p = ft_strchr(p + 1, ' ')))
-				ft_save_room(lem, lem->data[i]);
+			ft_save_room(lem, lem->data[i]);
 		else if (ft_strchr(lem->data[i], '-'))
 			lem->links[lem->link++] = ft_strdup(lem->data[i]);
 		else if (lem->data[i][0] != '#' && !ft_strchr(lem->data[i], ' '))
@@ -62,20 +61,26 @@ int		ft_store(t_lem_in *lem)
 	return (1);
 }
 
+void	ft_swap_rooms2(t_lem_in *lem, t_rm *temp)
+{
+	temp->name = lem->rm[0].name;
+	temp->x = lem->rm[0].x;
+	temp->y = lem->rm[0].y;
+	lem->rm[0].name = lem->rm[lem->start].name;
+	lem->rm[0].x = lem->rm[lem->start].x;
+	lem->rm[0].y = lem->rm[lem->start].y;
+	lem->rm[lem->start].name = temp->name;
+	lem->rm[lem->start].x = temp->x;
+	lem->rm[lem->start].y = temp->y;
+}
+
 void	ft_swap_rooms(t_lem_in *lem)
 {
-	t_rm temp;
+	t_rm	temp;
+
 	if (lem->start != 0)
 	{
-		temp.name = lem->rm[0].name;
-		temp.x = lem->rm[0].x;
-		temp.y = lem->rm[0].y;
-		lem->rm[0].name = lem->rm[lem->start].name;
-		lem->rm[0].x = lem->rm[lem->start].x;
-		lem->rm[0].y = lem->rm[lem->start].y;
-		lem->rm[lem->start].name = temp.name;
-		lem->rm[lem->start].x = temp.x;
-		lem->rm[lem->start].y = temp.y;
+		ft_swap_rooms2(lem, &temp);
 	}
 	if (lem->end != lem->rooms - 1)
 	{
@@ -91,7 +96,7 @@ void	ft_swap_rooms(t_lem_in *lem)
 	}
 }
 
-void ft_save_room(t_lem_in *lem, char *str)
+void	ft_save_room(t_lem_in *lem, char *str)
 {
 	char **s;
 

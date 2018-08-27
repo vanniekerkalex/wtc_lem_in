@@ -6,11 +6,27 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 12:28:58 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 12:35:26 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/27 16:36:17 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void		init_struct_2(t_lem_in *lem)
+{
+	int			i;
+
+	lem->map = NULL;
+	lem->rooms = 0;
+	lem->link = 0;
+	lem->start = 0;
+	lem->end = 0;
+	lem->len = 999;
+	lem->rmf = (int *)malloc(sizeof(int) * 100);
+	i = 0;
+	while (i < 100)
+		lem->rmf[i++] = -1;
+}
 
 t_lem_in	*init_struct(void)
 {
@@ -34,16 +50,7 @@ t_lem_in	*init_struct(void)
 	while (i < 1000 - 1)
 		lem->links[i++] = ft_strnew(50);
 	lem->links[i] = NULL;
-	lem->map = NULL;
-	lem->rooms = 0;
-	lem->link = 0;
-	lem->start = 0;
-	lem->end = 0;
-	lem->len = 999;
-	lem->rmf = (int *)malloc(sizeof(int) * 100);
-	i = 0;
-	while (i < 100)
-		lem->rmf[i++] = -1;
+	init_struct_2(lem);
 	return (lem);
 }
 
@@ -53,38 +60,7 @@ void		ft_print_links(t_lem_in *lem)
 
 	i = 0;
 	while (lem->data[i])
-		printf("%s\n", lem->data[i++]);
-/*	i = 0;
-//	while (lem->links[i])
-//		printf("%s\n", lem->links[i++]);
-
-	i = 0;
-	while (lem->rm[i].name)
-	{
-		printf("Name: %s X: %d Y: %d\n", lem->rm[i].name,lem->rm[i].x,lem->rm[i].y);
-		i++;
-	}
-
-//	printf("Rooms: %d\n", lem->rooms);
-
-	i = 0;
-	while (i < lem->rooms)
-	{
-		j = 0;
-		if (i == 0)
-		{
-			printf("  ");
-			while (j < lem->rooms)
-				printf("%s ", lem->rm[j++].name);
-			printf("\n");
-		}
-		printf("%s ", lem->rm[i].name);
-		j = 0;
-		while (j < lem->rooms)
-			printf("%d ", lem->map[i][j++]);
-		printf("\n");
-		i++;
-	}*/
+		ft_putstr(ft_strjoin(lem->data[i++], "\n"));
 }
 
 void		ft_convert_links(t_lem_in *lem)
