@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 10:55:55 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 13:16:39 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/27 23:27:04 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ int		ft_count_list_len(t_lem_in *lem)
 
 char	*add_room(t_lem_in *lem, char *lst, int rm)
 {
+	char *str;
+	str = NULL;
 	if (!ft_is_in_list(lem->rm[rm].name, lst))
 	{
-		lst = ft_strjoin(lst, "-");
-		lst = ft_strjoin(lst, lem->rm[rm].name);
+		str = ft_strjoin(lst, "-");
+		lst = ft_strjoin(str, lem->rm[rm].name);
+		//lst = ft_strjoin(lst, "-");
+		//lst = ft_strjoin(lst, lem->rm[rm].name);
 		if (rm == lem->rooms - 1)
 		{
 			if (crawl_count(lst) < lem->len)
@@ -54,6 +58,7 @@ char	*add_room(t_lem_in *lem, char *lst, int rm)
 			}
 		}
 	}
+	//free(str);
 	return (lst);
 }
 

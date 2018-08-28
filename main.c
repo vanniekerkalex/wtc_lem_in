@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 18:02:17 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/28 11:23:02 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,49 +35,38 @@ void ft_free(t_lem_in *lem)
 	int i;
 
 	i = 0;
-	while (lem->data[i])
-	{
-		//ft_putstr("yo");
-		free(lem->data[i]);
-		lem->data[i] = NULL;
-		i++;
-	}
-	lem->data[i] = NULL;
+//	while (i < 2000)
+//		free(lem->data[i++]);
 	free(lem->data);
+//	lem->data = NULL;
 	i = 0;
-	while (lem->rm[i].name)
-	{
-		//ft_putstr("bo");
-		free(lem->rm[i].name);
-		lem->rm[i].name = NULL;
-		i++;
-	}
-	lem->rm[i].name = NULL;
+//	while (i < lem->rooms)
+//	{
+//		free(lem->rm[i++].name);
+//		lem->rm[i++].name = NULL;
+//	}
 	free(lem->rm);
-	/*i = 0;
-	while (lem->links[i])
-	{
-		ft_putstr("lo");
-		//ft_strdel(&lem->links[i]);
-		free(lem->links[i]);
-		i++;
-	}
-	lem->links[0] = NULL;
-	free(lem->links);*/
-	i = 0;
-	while (i < lem->rooms)
-	{
-		free(lem->map[i]);
-		lem->map[i] = NULL;
-		i++;
-	}
+//	lem->rm = NULL;
+//	i = 0;
+//	while (i < 100)
+//	{
+//		free(lem->links[i++]);
+//		lem->links[i++] = NULL;
+//	}
+	free(lem->links);
+//	lem->links = NULL;
+//	i = 0;
+//	while (i < lem->rooms)
+//	{
+//		free(lem->map[i++]);
+//		lem->map[i++] = NULL;
+//	}
 	free(lem->map);
+	//lem->map = NULL;
 	free(lem->lst);
-	lem->lst = NULL;
+//	lem->lst = NULL;
 	free(lem->rmf);
-	lem->rmf = NULL;
-
-	//free(lem);
+	//lem->rmf = NULL;
 }
 
 int		main(void)
@@ -86,7 +75,9 @@ int		main(void)
 
 	lem = init_struct();
 	ft_lem_in(lem);
-	ft_free(lem);
+	//ft_free(lem);
+	//free(lem);
+	//lem = NULL;
 	//while (1)
 	//;
 	return (0);

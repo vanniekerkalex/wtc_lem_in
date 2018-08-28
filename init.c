@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 12:28:58 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 16:36:17 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/27 23:43:35 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void		ft_convert_links(t_lem_in *lem)
 			while (++j < lem->rooms)
 				ft_check_match(lem, str, i, j);
 		}
+		free(str);
 	}
 }
 
