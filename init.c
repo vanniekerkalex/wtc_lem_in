@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 12:28:58 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 23:43:35 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/28 12:36:29 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_lem_in	*init_struct(void)
 	}
 	lem->links = (char **)malloc(sizeof(char *) * 100);
 	i = 0;
-	while (i < 1000 - 1)
+	while (i < 99)
 		lem->links[i++] = ft_strnew(50);
 	lem->links[i] = NULL;
 	init_struct_2(lem);

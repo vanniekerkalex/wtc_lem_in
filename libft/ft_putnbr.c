@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avan-ni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:39:24 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/06/01 16:06:16 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/28 13:07:51 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	ft_putnbr(int n)
 {
+	char *s;
+
 	if (n == -2147483648)
 	{
 		ft_putstr("-2147483648");
 		return ;
 	}
-	ft_putstr(ft_itoa(n));
+	s = ft_itoa(n);
+	ft_putstr(s);
+	free(s);
 }
