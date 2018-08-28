@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 18:02:17 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/28 17:34:43 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,17 @@ void ft_free(t_lem_in *lem)
 	}
 	lem->rm[i].name = NULL;
 	free(lem->rm);
-	/*i = 0;
+	i = 0;
 	while (lem->links[i])
 	{
-		ft_putstr("lo");
+		//ft_putstr("lo");
 		//ft_strdel(&lem->links[i]);
 		free(lem->links[i]);
+		lem->links[i] = NULL;
 		i++;
 	}
 	lem->links[0] = NULL;
-	free(lem->links);*/
+	free(lem->links);
 	i = 0;
 	while (i < lem->rooms)
 	{
@@ -73,7 +74,7 @@ void ft_free(t_lem_in *lem)
 	}
 	free(lem->map);
 	free(lem->lst);
-	lem->lst = NULL;
+	//lem->lst = NULL;
 	free(lem->rmf);
 	lem->rmf = NULL;
 

@@ -6,12 +6,12 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 17:34:52 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/28 15:22:35 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/28 18:49:23 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-//hello
+
 int		crawl_right(t_lem_in *lem, char *lst, int y, int x)
 {
 	if ((x > lem->rooms - 1 || y > lem->rooms - 1 || x < 0 || y < 0))
