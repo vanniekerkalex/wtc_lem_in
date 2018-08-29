@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/29 13:18:07 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 20:04:12 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/29 22:56:10 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,5 @@ void	viz(t_lem_in *lem)
 	attron(COLOR_PAIR(4));
 	viz_heading(lem, rooms);
 	viz_ants(lem);
-	//refresh();
-	//usleep(300000);
 	clear();
 }
