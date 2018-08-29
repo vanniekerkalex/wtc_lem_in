@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 13:27:13 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/29 20:06:00 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	ft_save_room(t_lem_in *lem, char *str)
 	lem->rm[lem->rooms].name = ft_strdup(s[0]);
 	lem->rm[lem->rooms].x = ft_atoi(s[1]);
 	lem->rm[lem->rooms++].y = ft_atoi(s[2]);
-	while (*(s + i)) //added
+	while (*(s + i))
 		free(s[i++]);
 	free(s);
 }

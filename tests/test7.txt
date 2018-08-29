@@ -1,11 +1,11 @@
-37500
+37
 C 5 0
 ##start
 A 1 2
 ##end
 B 9 2
 D 5 4
-A-C
+A-
 A-D
 C-B
 D-B
