@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/28 17:34:43 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 11:00:56 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		main(void)
 	lem = init_struct();
 	ft_lem_in(lem);
 	ft_free(lem);
+	free(lem);
 	//while (1)
 	//;
 	return (0);

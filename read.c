@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/28 17:30:38 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 12:12:45 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_store(t_lem_in *lem)
 		else if ((p = ft_strchr(lem->data[i], ' ')) &&
 				lem->data[i][0] != '#' && (p = ft_strchr(p + 1, ' ')))
 			ft_save_room(lem, lem->data[i]);
-		else if (ft_strchr(lem->data[i], '-'))
+		else if ((p = ft_strchr(lem->data[i], '-')) && ft_strcmp(p + 1, ""))
 			lem->links[lem->link++] = ft_strdup(lem->data[i]);
 		else if (lem->data[i][0] != '#' && !ft_strchr(lem->data[i], ' '))
 			lem->ants = ft_atoi(lem->data[i]);
