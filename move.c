@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 21:18:42 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 16:40:43 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 13:07:24 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ void	sort_rooms(t_lem_in *lem)
 				lem->rmf[i] = j;
 			j++;
 		}
+		free(s[i]); //added
 		i++;
 	}
+	free(s); //added
 	write(1, "\n", 1);
 }

@@ -6,7 +6,11 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 12:28:58 by avan-ni           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/08/28 12:36:29 by avan-ni          ###   ########.fr       */
+=======
+/*   Updated: 2018/08/28 17:27:01 by jde-agr          ###   ########.fr       */
+>>>>>>> old-state
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +30,8 @@ void		init_struct_2(t_lem_in *lem)
 	i = 0;
 	while (i < 100)
 		lem->rmf[i++] = -1;
+	lem->lst = (char *)malloc(sizeof(char) * 2000);
+	lem->lst = NULL;
 }
 
 t_lem_in	*init_struct(void)
@@ -47,20 +53,33 @@ t_lem_in	*init_struct(void)
 	}
 	lem->links = (char **)malloc(sizeof(char *) * 100);
 	i = 0;
+<<<<<<< HEAD
 	while (i < 99)
 		lem->links[i++] = ft_strnew(50);
 	lem->links[i] = NULL;
+=======
+	//while (i < 100)
+	//	lem->links[i++] = ft_strnew(50);
+	//lem->links[i] = NULL;
+>>>>>>> old-state
 	init_struct_2(lem);
 	return (lem);
 }
 
 void		ft_print_links(t_lem_in *lem)
 {
+	char *s;
 	int i;
+	int j;
 
 	i = 0;
 	while (lem->data[i])
-		ft_putstr(ft_strjoin(lem->data[i++], "\n"));
+	{
+		s = ft_strjoin(lem->data[i++], "\n");
+		ft_putstr(s);
+		j = 0;
+		free(s); //added
+	}
 }
 
 void		ft_convert_links(t_lem_in *lem)
@@ -85,6 +104,12 @@ void		ft_convert_links(t_lem_in *lem)
 			while (++j < lem->rooms)
 				ft_check_match(lem, str, i, j);
 		}
+<<<<<<< HEAD
+=======
+		j = 0;
+		while (*(str + j)) //added
+			free(str[j++]);
+>>>>>>> old-state
 		free(str);
 	}
 }

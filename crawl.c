@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 17:34:52 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 12:31:07 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 12:07:20 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,9 @@ int		crawl_down(t_lem_in *lem, char *lst, int y, int x)
 
 void	crawl(t_lem_in *lem)
 {
-	crawl_right(lem, lem->rm[0].name, 0, 0);
+	char *tmp;
+
+	tmp = ft_strdup(lem->rm[0].name);
+	crawl_right(lem, tmp, 0, 0);
+	free(tmp);
 }

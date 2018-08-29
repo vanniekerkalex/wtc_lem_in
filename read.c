@@ -6,7 +6,11 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/08/27 23:16:34 by avan-ni          ###   ########.fr       */
+=======
+/*   Updated: 2018/08/29 12:12:45 by jde-agr          ###   ########.fr       */
+>>>>>>> old-state
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +53,7 @@ int		ft_store(t_lem_in *lem)
 		else if ((p = ft_strchr(lem->data[i], ' ')) &&
 				lem->data[i][0] != '#' && (p = ft_strchr(p + 1, ' ')))
 			ft_save_room(lem, lem->data[i]);
-		else if (ft_strchr(lem->data[i], '-'))
+		else if ((p = ft_strchr(lem->data[i], '-')) && ft_strcmp(p + 1, ""))
 			lem->links[lem->link++] = ft_strdup(lem->data[i]);
 		else if (lem->data[i][0] != '#' && !ft_strchr(lem->data[i], ' '))
 			lem->ants = ft_atoi(lem->data[i]);
@@ -99,9 +103,14 @@ void	ft_swap_rooms(t_lem_in *lem)
 void	ft_save_room(t_lem_in *lem, char *str)
 {
 	char **s;
+	int i;
 
+	i = 0;
 	s = ft_strsplit(str, ' ');
 	lem->rm[lem->rooms].name = ft_strdup(s[0]);
 	lem->rm[lem->rooms].x = ft_atoi(s[1]);
 	lem->rm[lem->rooms++].y = ft_atoi(s[2]);
+	while (*(s + i)) //added
+		free(s[i++]);
+	free(s);
 }
