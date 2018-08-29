@@ -6,7 +6,7 @@
 /*   By: jde-agr <jde-agr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 04:54:07 by jde-agr           #+#    #+#             */
-/*   Updated: 2018/08/29 13:07:28 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 13:47:00 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	no_rooms(t_lem_in *lem)
 {
-	if (lem->rooms == 0)
+	if (lem->rooms <= 0 || lem->rooms > 50)
 	{
-		ft_putstr("Error : No rooms");
+		ft_putstr("Error : Invalid rooms");
 		return (1);
 	}
 	return (0);
@@ -24,9 +24,9 @@ int	no_rooms(t_lem_in *lem)
 
 int	no_ants(t_lem_in *lem)
 {
-	if (lem->ants == 0)
+	if (lem->ants <= 0 || lem->ants > 100)
 	{
-		ft_putstr("Error : No ants");
+		ft_putstr("Error : Invalid ants");
 		return (1);
 	}
 	return (0);

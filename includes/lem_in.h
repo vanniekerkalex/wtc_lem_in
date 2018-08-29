@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:59:36 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/27 13:32:52 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 14:09:40 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_lem_in
 	char	*lst;
 	int		len;
 	int		*rmf;
+	int		viz;
 }				t_lem_in;
 
 t_lem_in		*init_struct(void);
@@ -68,5 +69,6 @@ void			print_ants(t_lem_in *lem, int ant, int rm);
 int				move_rec(t_lem_in *lem, int ant, int rm, int count);
 
 int				is_error(t_lem_in *lem);
+void			viz(t_lem_in *lem);
 
 #endif

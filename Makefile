@@ -6,7 +6,7 @@
 #    By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/14 11:40:00 by avan-ni           #+#    #+#              #
-#    Updated: 2018/08/27 22:43:15 by avan-ni          ###   ########.fr        #
+#    Updated: 2018/08/29 14:12:13 by avan-ni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS = *.o
 
 HEADERS = -I libft/includes -I includes/
 
-LIB = libft/libft.a
+LIB = libft/libft.a -lncurses
 
 $(LEM) :
 	@make fclean -C libft/

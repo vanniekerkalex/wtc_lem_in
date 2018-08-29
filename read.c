@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 13:10:17 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 13:27:13 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		ft_store(t_lem_in *lem)
 	{
 		if (!ft_strcmp(lem->data[i], "##start"))
 			lem->start = lem->rooms;
+		else if (!ft_strcmp(lem->data[i], "##viz"))
+			lem->viz = 1;
 		else if (!ft_strcmp(lem->data[i], "##end"))
 			lem->end = lem->rooms;
 		else if ((p = ft_strchr(lem->data[i], ' ')) &&
