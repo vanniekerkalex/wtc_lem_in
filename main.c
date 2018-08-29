@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 14:47:00 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/29 19:57:15 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_lem_in(t_lem_in *lem)
 	{
 		newterm(NULL, stderr, stdin);
 		viz(lem);
-		//endwin();
+		endwin();
 	}
 	else
 	{

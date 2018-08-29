@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/29 13:18:07 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 16:40:38 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/08/29 20:04:12 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,46 @@ void	viz_heading(t_lem_in *lem, char **rooms)
 		i++;
 	}
 	i = 0;
-	while (i <= (lem->len - 1) * 10)
+	while (i < (lem->len - 1) * 10)
 		mvprintw(1, i++, "-");
 }
 
-void	viz_ants(t_lem_in *lem)//, char **rooms)
+void	viz_move(t_lem_in *lem, int color, int room, int ant)
+{
+	int k;
+
+	if (room <= -2 || ant >= lem->ants || room >= lem->len + lem->ants - 2)
+		return ;
+	k = 0;
+	while (k <= 10)
+	{
+		if (room < lem->len - 1)
+		{
+			attron(COLOR_PAIR(color));
+			mvprintw(1, (room * 10) + k, "X");
+			if (k > 0)
+			{
+				attron(COLOR_PAIR(4));
+				mvprintw(1, (room * 10) + k - 1, "-");
+			}
+			refresh();
+			usleep(500000 / lem->ants);
+		}
+		k++;
+	}
+	if (room < lem->len + lem->ants - 2)
+		viz_move(lem, (color + 1) % 3 + 1, room - 1, ant + 1);
+	return ;
+}
+void	viz_ants(t_lem_in *lem)
 {
 	int i;
-	int j;
-	int k;
-	int l;
 
 	i = 0;
-	l = 0;
-	while (i < (lem->len - 1) * 10)//lem->ants * ((lem->len * 10) - 19))
+	while (i < lem->ants * lem->len + 1)
 	{
-		j = l;
-		while (j >= 0)
-		{
-			//attron(COLOR_PAIR(j % 3 + 1));
-			k = 0;
-			while (k < 10)
-			{
-				attron(COLOR_PAIR((j % 10) % 3 + 1));
-				if (k % 10)
-					mvprintw(1, (j * 10) + k, "X");
-				k++;
-				refresh();
-				usleep(100000);
-			}
-			j--;
-		}
-		l++;
-		i+= 10;
-		refresh();
-		usleep(300000);
+		viz_move(lem, 0 % 3 + 1, i, 0);
+		i++;
 	}
 }
 
@@ -69,63 +74,15 @@ void	viz(t_lem_in *lem)
 	i = 0;
 	rooms = ft_strsplit(lem->lst, '-');
 	curs_set(0);
-
 	start_color();
 	init_pair(1, COLOR_RED, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
-	init_pair(3, COLOR_BLUE, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(3, COLOR_GREEN, COLOR_BLACK);
 	init_pair(4, COLOR_WHITE, COLOR_BLACK);
 	attron(COLOR_PAIR(4));
-
 	viz_heading(lem, rooms);
-	viz_ants(lem);//, rooms);
-
-
-	refresh();
-	usleep(300000);
+	viz_ants(lem);
+	//refresh();
+	//usleep(300000);
 	clear();
 }
-
-
-
-/*
-void	ft_print_arr(t_stacks *s, int x, int y)
-{
-	int i;
-	int j;
-
-	i = s->len_a - 1;
-	j = 0;
-	start_color();
-	init_pair(1, COLOR_GREEN, COLOR_BLACK);
-	init_pair(2, COLOR_RED, COLOR_BLACK);
-	init_pair(3, COLOR_WHITE, COLOR_BLACK);
-	mvprintw(y + j, x, "TOP OF A\n");
-	mvprintw(y + j + 1, x, "---\n");
-	mvprintw(y + j, x + 20, "TOP OF B\n");
-	mvprintw(y + j + 1, x + 20, "---\n");
-	j += 2;
-	attron(COLOR_PAIR(1));
-	while (i >= 0)
-		(j <= 84) ? (mvprintw(y + j++, x, "%d\n", s->stack_a[i--])) : (i--);
-	i = s->len_b - 1;
-	j = 2;
-	attron(COLOR_PAIR(2));
-	while (i >= 0)
-		(j <= 84) ? (mvprintw(y + j++, x + 20, "%d\n",
-					s->stack_b[i--])) : (i--);
-	attron(COLOR_PAIR(3));
-}
-
-void	print_win(t_stacks *s)
-{
-	curs_set(0);
-	ft_print_arr(s, 0, 0);
-	refresh();
-	if (flag == 0)
-		usleep(3000000);
-	else
-		usleep(3000000);
-	clear();
-}
-*/
