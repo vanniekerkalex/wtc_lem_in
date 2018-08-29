@@ -6,7 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 10:55:55 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 13:07:15 by jde-agr          ###   ########.fr       */
+/*   Updated: 2018/08/29 13:11:43 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char	*add_room(t_lem_in *lem, char *lst, int rm)
 			}
 		}
 	}
-	free(str);
 	return (lst);
 }
 

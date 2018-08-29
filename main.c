@@ -6,11 +6,7 @@
 /*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/08/28 12:39:32 by avan-ni          ###   ########.fr       */
-=======
-/*   Updated: 2018/08/29 11:00:56 by jde-agr          ###   ########.fr       */
->>>>>>> old-state
+/*   Updated: 2018/08/29 13:10:19 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +46,6 @@ void ft_free(t_lem_in *lem)
 //		lem->rm[i++].name = NULL;
 //	}
 	free(lem->rm);
-<<<<<<< HEAD
-//	lem->rm = NULL;
-//	i = 0;
-//	while (i < 100)
-//	{
-//		free(lem->links[i++]);
-//		lem->links[i++] = NULL;
-//	}
-	free(lem->links);
-//	lem->links = NULL;
-//	i = 0;
-//	while (i < lem->rooms)
-//	{
-//		free(lem->map[i++]);
-//		lem->map[i++] = NULL;
-//	}
-=======
 	i = 0;
 	while (lem->links[i])
 	{
@@ -85,15 +64,10 @@ void ft_free(t_lem_in *lem)
 		lem->map[i] = NULL;
 		i++;
 	}
->>>>>>> old-state
 	free(lem->map);
 	//lem->map = NULL;
 	free(lem->lst);
-<<<<<<< HEAD
-//	lem->lst = NULL;
-=======
 	//lem->lst = NULL;
->>>>>>> old-state
 	free(lem->rmf);
 	//lem->rmf = NULL;
 }
@@ -104,14 +78,8 @@ int		main(void)
 
 	lem = init_struct();
 	ft_lem_in(lem);
-<<<<<<< HEAD
-	//ft_free(lem);
-	//free(lem);
-	//lem = NULL;
-=======
 	ft_free(lem);
 	free(lem);
->>>>>>> old-state
 	//while (1)
 	//;
 	return (0);
