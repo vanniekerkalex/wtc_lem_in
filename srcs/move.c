@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jde-agr <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 21:18:42 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 14:46:52 by avan-ni          ###   ########.fr       */
+/*   Created: 2018/08/30 10:48:53 by jde-agr           #+#    #+#             */
+/*   Updated: 2018/08/30 10:48:56 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	sort_rooms(t_lem_in *lem)
 				lem->rmf[i] = j;
 			j++;
 		}
-		free(s[i]); //added
+		free(s[i]);
 		i++;
 	}
-	free(s); //added
+	free(s);
 }

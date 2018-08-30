@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+         #
+#    By: jde-agr <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/08/14 11:40:00 by avan-ni           #+#    #+#              #
-#    Updated: 2018/08/29 22:47:55 by avan-ni          ###   ########.fr        #
+#    Created: 2018/08/30 09:38:01 by jde-agr           #+#    #+#              #
+#    Updated: 2018/08/30 09:38:31 by jde-agr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ $(LEM) :
 	@make fclean -C libft/
 	@make -C libft/
 	@make clean -C libft/
-	gcc $(FLAGS) -c $(SRCS) srcs/main.c $(HEADERS)
-	gcc $(FLAGS) $(OBJS) main.o -o $(LEM) $(LIB)
+	@gcc $(FLAGS) -c $(SRCS) srcs/main.c $(HEADERS)
+	@gcc $(FLAGS) $(OBJS) main.o -o $(LEM) $(LIB)
 	@make clean
 	@echo "\x1B[33mLEM_IN compiled\x1B[0m"
 

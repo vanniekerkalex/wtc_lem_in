@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jde-agr <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 11:47:29 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 20:06:00 by avan-ni          ###   ########.fr       */
+/*   Created: 2018/08/30 10:49:05 by jde-agr           #+#    #+#             */
+/*   Updated: 2018/08/30 12:07:42 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int		ft_read(t_lem_in *lem)
 		else
 			lem->data[i++] = ft_strdup(line);
 		free(line);
+	}
+	if (i == 0)
+	{
+		ft_putstr("Error : Empty file\n");
+		exit(0);
 	}
 	lem->data[i] = NULL;
 	free(line);
@@ -100,8 +105,8 @@ void	ft_swap_rooms(t_lem_in *lem)
 
 void	ft_save_room(t_lem_in *lem, char *str)
 {
-	char **s;
-	int i;
+	char	**s;
+	int		i;
 
 	i = 0;
 	s = ft_strsplit(str, ' ');

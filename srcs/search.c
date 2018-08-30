@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jde-agr <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 10:55:55 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 13:11:43 by jde-agr          ###   ########.fr       */
+/*   Created: 2018/08/30 10:49:31 by jde-agr           #+#    #+#             */
+/*   Updated: 2018/08/30 11:16:10 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,14 @@ int		ft_is_in_list(char *node, char *list)
 		if (!ft_strcmp(node, s[i]))
 		{
 			j = 0;
-			while (*(s + i + j)) //added
+			while (*(s + i + j))
 				free(s[i + j++]);
 			free(s);
 			return (1);
 		}
-		//i++;
-		free(s[i++]); //added
+		free(s[i++]);
 	}
-	free(s); //added
+	free(s);
 	return (0);
 }
 
@@ -81,9 +80,9 @@ int		crawl_count(char *lst)
 	len = 0;
 	while (*(str + len))
 	{
-		free(str[len]); //added
+		free(str[len]);
 		len++;
 	}
-	free(str); //added
+	free(str);
 	return (len);
 }

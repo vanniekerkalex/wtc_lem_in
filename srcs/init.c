@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jde-agr <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 12:28:58 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 13:27:00 by avan-ni          ###   ########.fr       */
+/*   Created: 2018/08/30 10:48:19 by jde-agr           #+#    #+#             */
+/*   Updated: 2018/08/30 10:48:21 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void		init_struct_2(t_lem_in *lem)
 	lem->start = 0;
 	lem->end = 0;
 	lem->len = 999;
-	lem->rmf = (int *)malloc(sizeof(int) * 100);
+	lem->rmf = (int *)malloc(sizeof(int) * 1000);
 	i = 0;
-	while (i < 100)
+	while (i < 1000)
 		lem->rmf[i++] = -1;
-	lem->lst = (char *)malloc(sizeof(char) * 2000);
+	lem->lst = (char *)malloc(sizeof(char) * 1000);
 	lem->lst = NULL;
 	lem->viz = 0;
 }
@@ -37,7 +37,7 @@ t_lem_in	*init_struct(void)
 	int			i;
 
 	lem = (t_lem_in *)malloc(sizeof(t_lem_in));
-	lem->data = (char **)malloc(sizeof(char *) * 2000);
+	lem->data = (char **)malloc(sizeof(char *) * 3000);
 	lem->ants = 0;
 	lem->rm = (t_rm *)malloc(sizeof(t_rm) * 1000);
 	i = 0;
@@ -48,7 +48,7 @@ t_lem_in	*init_struct(void)
 		lem->rm[i].y = 0;
 		lem->rm[i++].size = 0;
 	}
-	lem->links = (char **)malloc(sizeof(char *) * 100);
+	lem->links = (char **)malloc(sizeof(char *) * 2000);
 	i = 0;
 	init_struct_2(lem);
 	return (lem);
@@ -56,9 +56,9 @@ t_lem_in	*init_struct(void)
 
 void		ft_print_links(t_lem_in *lem)
 {
-	char *s;
-	int i;
-	int j;
+	char	*s;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (lem->data[i])

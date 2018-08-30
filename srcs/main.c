@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avan-ni <avan-ni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jde-agr <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 11:44:49 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/08/29 19:57:15 by avan-ni          ###   ########.fr       */
+/*   Created: 2018/08/30 10:48:40 by jde-agr           #+#    #+#             */
+/*   Updated: 2018/08/30 11:12:48 by jde-agr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_lem_in(t_lem_in *lem)
 	crawl(lem);
 	if (!lem->lst)
 	{
-		ft_putstr("Error : No valid solution");
+		ft_putstr("Error : No valid solution\n");
 		exit(0);
 	}
 	sort_rooms(lem);
@@ -40,7 +40,7 @@ void	ft_lem_in(t_lem_in *lem)
 	}
 }
 
-void ft_free(t_lem_in *lem)
+void	ft_free(t_lem_in *lem)
 {
 	int i;
 
@@ -55,7 +55,6 @@ void ft_free(t_lem_in *lem)
 		lem->links[i] = NULL;
 		i++;
 	}
-	lem->links[0] = NULL;
 	free(lem->links);
 	i = 0;
 	while (i < lem->rooms)
