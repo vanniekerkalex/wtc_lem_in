@@ -1,3 +1,5 @@
+![](lem_in.PNG)
+
 # LEM_IN
 
 Find the shortest path between two rooms, "start" and "finish", with multiple tunnels and roooms in between.
