@@ -21,3 +21,11 @@ as many ants as necessary.)
 - At each turn you can move each ant only once and through a tube (the room at
 the receiving end must be empty).
 - You must to display your results on the standard output
+
+## Demo
+
+This image show's the final (and shortest) path available in a network of tunnels 
+and rooms. The start and finish rooms are '0' and '8' respectively. The rooms along 
+this shortest path between '0' and '8' are: 3, 6, 5 & 7.
+
+![](ants.PNG)
